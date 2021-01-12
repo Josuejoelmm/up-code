@@ -8,6 +8,9 @@ const theme = createMuiTheme({
         secondary: {
             main: "#ffa4a4"
         },
+        myBestColor: {
+            black: "#000000"
+        }
         // fontFami
     }
 });

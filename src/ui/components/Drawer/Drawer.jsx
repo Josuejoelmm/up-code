@@ -1,0 +1,58 @@
+import React from "react";
+import Drawer from "@material-ui/core/Drawer";
+import withStyles from "@material-ui/core/styles/withStyles";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider
+} from "@material-ui/core";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+
+const styles = theme => ({
+  list: {
+    width: 250
+  },
+  fullList: {
+    width: "auto"
+  }
+});
+
+class DrawerComponent extends React.Component {
+  render() {
+    const { classes } = this.props;
+
+    const sideList = side => (
+      <div
+        className={classes.list}
+        role="presentation"
+        onClick={this.props.toggleDrawerHandler}
+        onKeyDown={this.props.toggleDrawerHandler}
+      >
+        <List>
+          {["Login", "Register"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        {/* <List>
+          {
+
+          }
+        </List> */}
+      </div>
+    );
+
+    return (
+      <Drawer open={this.props.isDraweOpen} onClose={this.props.toggleDrawerHandler}>
+        {sideList("left")}
+      </Drawer>
+    );
+  }
+}
+
+export default withStyles(styles)(DrawerComponent);
